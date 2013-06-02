@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 
 
-gem 'sqlite3'
+gem 'pg'
 gem 'jquery-rails'
 
 
@@ -18,14 +18,29 @@ group :assets do
 end
 
 
+
+
 group :test do
-  gem 'cucumber-rails'
+  gem 'rack-test'
+  gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_girl'
+  gem 'email_spec'
+  gem 'launchy'
+  gem 'rb-fsevent', require: false
+  gem 'growl'
+end
+
+group :development do
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
 end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'spork'
+  gem 'guard-spork'
 end
 
 
