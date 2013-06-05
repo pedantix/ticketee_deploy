@@ -1,4 +1,16 @@
 <%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(@project.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li>* <%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
