@@ -9,6 +9,7 @@ Spork.prefork do
   # need to restart spork for it take effect.
 
   ENV["RAILS_ENV"] ||= 'test'
+  require 'factory_girl'
   require File.expand_path("../../../config/environment", __FILE__)
   require 'cucumber/rails'
 
@@ -19,7 +20,7 @@ Spork.each_run do
   ActionController::Base.allow_rescue = false
 
   Cucumber::Rails::Database.javascript_strategy = :truncation
-
+  FactoryGirl.reload
   begin
     DatabaseCleaner.strategy = :transaction
   rescue NameError
