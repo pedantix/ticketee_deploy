@@ -1,7 +1,16 @@
 #require 'uri'
 #require 'cgi'
 #require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
-#require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+
+
+module WithinHelpers
+  def with_scope(locator)
+    locator ? within(*selector_for(locator)) { yield } : yield
+  end
+end
+World(WithinHelpers)
+
 
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
@@ -12,15 +21,15 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
-When(/^I fill in "(.*?)" with "(.*?)"$/) do |field, value|
+When(/^(?:|I )fill in "(.*?)" with "(.*?)"$/) do |field, value|
   fill_in(field, with: value)
 end
 
-When(/^I press "([^"]*)"$/) do |button|
+When(/^(?:|I )press "([^"]*)"$/) do |button|
   click_button(button) 
 end
 
-Then(/^I should see "([^"]*)"$/) do |regexp|
+Then(/^(?:|I )should see "([^"]*)"$/) do |regexp|
     regexp = Regexp.new(regexp)
 
   if page.respond_to? :should
@@ -39,7 +48,7 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   end
 end
 
-Then(/^I should see the title "(.*?)"$/) do |title|
+Then(/^(?:|I )should see the title "(.*?)"$/) do |title|
   page.should have_title(title)
 end
 
@@ -52,3 +61,40 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
     assert page.has_no_content?(text)
   end
 end
+
+Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
+  with_scope(parent) do
+    field = find_field(field)
+    field_value = (field.tag_name == 'textarea') ? field.text : field.value
+    if field_value.respond_to? :should
+      field_value.should =~ /#{value}/
+    else
+      assert_match(/#{value}/, field_value)
+    end
+  end
+end
+
+Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
+  with_scope(parent) do
+    field = find_field(field)
+    field_value = (field.tag_name == 'textarea') ? field.text : field.value
+    if field_value.respond_to? :should_not
+      field_value.should_not =~ /#{value}/
+    else
+      assert_no_match(/#{value}/, field_value)
+    end
+  end
+end
+
+Then /^I should see "(.*?)" within the tag "(.*?)" of "(.*?)"$/ do |text_value, tag, css_id|
+   find("#{css_id}").find("#{tag}").should have_content('')
+end
+
+
+Then(/^I should not see "(.*?)" within the tag "(.*?)" of "(.*?)"$/) do |text_value, tag, css_id|
+   find("#{css_id}").find("#{tag}").should_not have_content('')
+end
+
+
+
+
