@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 gem 'dynamic_form'
 
-
+gem 'devise'
 gem 'pg'
 gem 'jquery-rails'
 

@@ -87,12 +87,12 @@ Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |f
 end
 
 Then /^I should see "(.*?)" within the tag "(.*?)" of "(.*?)"$/ do |text_value, tag, css_id|
-   find("#{css_id}").find("#{tag}").should have_content('')
+   find("#{css_id}").find("#{tag}").should have_content(text_value)
 end
 
 
 Then(/^I should not see "(.*?)" within the tag "(.*?)" of "(.*?)"$/) do |text_value, tag, css_id|
-   find("#{css_id}").find("#{tag}").should_not have_content('')
+   find("#{css_id}").find("#{tag}").should_not have_content(text_value)
 end
 
 
