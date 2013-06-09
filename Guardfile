@@ -4,12 +4,13 @@
 require 'active_support/core_ext'
 
 
-  guard :spork, :rspec_env => { 'RAILS_ENV' => 'test' }, :cucumber_env => { 'RAILS_ENV' => 'test' } do
+  guard :spork, test_unit: false, :rspec_env => { 'RAILS_ENV' => 'test' }, :cucumber_env => { 'RAILS_ENV' => 'test' } do
     watch('config/application.rb')
     watch('config/environment.rb')
     watch(%r{^config/environments/.+\.rb$})
     watch(%r{^config/initializers/.+\.rb$})
     watch('spec/spec_helper.rb')
+    watch(%r{^factories/.+\.rb$})
   end
 
 guard :rspec, version: 2, all_after_pass:false, cli: '--drb' do
