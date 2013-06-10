@@ -1,5 +1,5 @@
 Feature: Editing Projects
-  In order to updata project information
+  In order to update a project information
   As a user 
   I want to be able to do that through an interface
 
@@ -14,7 +14,6 @@ Feature: Editing Projects
     And I follow "Edit Project"  
 
   Scenario: Updating a project
-
     And I fill in "Name" with "TextMate 2 beta"
     And I press "Update Project"
     Then I should see "Project has been updated"

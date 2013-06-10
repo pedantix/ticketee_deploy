@@ -14,12 +14,12 @@ Spork.prefork do
   require 'cucumber/rails'
 
   Capybara.default_selector = :css
-
+  ActionController::Base.allow_rescue = false
 end
 
 Spork.each_run do
 
-  ActionController::Base.allow_rescue = false
+
 
   Cucumber::Rails::Database.javascript_strategy = :truncation
   FactoryGirl.reload
