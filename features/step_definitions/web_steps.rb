@@ -29,6 +29,11 @@ When(/^(?:|I )press "([^"]*)"$/) do |button|
   click_button(button) 
 end
 
+When /^I check "([^"]*)"$/ do |button|
+  check(button)
+end
+
+
 Then(/^(?:|I )should see "([^"]*)"$/) do |regexp|
     regexp = Regexp.new(regexp)
 
@@ -95,6 +100,8 @@ Then(/^I should not see "(.*?)" within the tag "(.*?)" of "(.*?)"$/) do |text_va
    find("#{css_id}").find("#{tag}").should_not have_content(text_value)
 end
 
-
+Then(/^I should see link "(.*?)"$/) do |link|
+  page.should have_link(link)
+end
 
 

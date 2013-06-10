@@ -32,6 +32,7 @@ group :test do
   gem 'launchy'
   gem 'rb-fsevent', require: false
   gem 'growl'
+  gem 'capybara-screenshot'
 end
 
 group :development do

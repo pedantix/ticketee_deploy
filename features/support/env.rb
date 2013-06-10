@@ -13,6 +13,8 @@ Spork.prefork do
   require File.expand_path("../../../config/environment", __FILE__)
   require 'cucumber/rails'
 
+  Capybara.default_selector = :css
+
 end
 
 Spork.each_run do

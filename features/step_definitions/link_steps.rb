@@ -1,5 +1,5 @@
 Then /^I should see the "([^\"]*)" link$/ do |text|
-    page.should( have_css("a", text: text), "Expected to see #{text.inspect} 
+    page.should(have_css("a", text: text), "Expected to see #{text.inspect} 
       link but did not.")
 end
 
