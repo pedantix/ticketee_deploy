@@ -29,7 +29,7 @@ Spork.each_run do
     raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
   end
 
-  DatabaseCleaner.clean
+  #DatabaseCleaner.clean
 
 end
 
