@@ -10,6 +10,8 @@ FactoryGirl.define do
   factory :ticket do
     title "Make it shiny!"
     description "Gradients! Starbursts! Oh my!"
+    user { |u| u.association(:user) }
+    project { |p| p.association(:project) }
   end
 
 end
