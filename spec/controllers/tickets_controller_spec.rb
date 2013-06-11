@@ -49,5 +49,11 @@ describe TicketsController do
       get :update, { project_id: project.id, id: ticket.id, ticket: {} }
       cannot_update_tickets!
     end
+
+    it "cannot delete a ticket without permisions" do
+      get :destroy, { project_id: project.id, id: ticket.id }
+      response.should redirect_to(project)
+      flash[:alert].should eql("You cannot delete tickets from this project.")
+    end
   end
 end
