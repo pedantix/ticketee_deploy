@@ -29,7 +29,7 @@ When(/^(?:|I )press "([^"]*)"$/) do |button|
   click_button(button) 
 end
 
-When /^I check "([^"]*)"$/ do |button|
+When /^(?:|I )check "([^"]*)"$/ do |button|
   check(button)
 end
 
