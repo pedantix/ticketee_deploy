@@ -6,6 +6,7 @@ gem 'dynamic_form'
 
 gem 'devise'
 gem 'cancan'
+gem 'paperclip'
 gem 'pg'
 gem 'jquery-rails'
 

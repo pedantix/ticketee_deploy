@@ -33,6 +33,10 @@ When /^(?:|I )check "([^"]*)"$/ do |button|
   check(button)
 end
 
+When /^(?:I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
+  attach_file(field, File.expand_path(path))
+end
+
 
 Then(/^(?:|I )should see "([^"]*)"$/) do |regexp|
     regexp = Regexp.new(regexp)
