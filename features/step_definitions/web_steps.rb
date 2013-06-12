@@ -95,6 +95,10 @@ Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |f
   end
 end
 
+
+
+#Usage
+#Then I should see "Make it shiny" within the tag "h2" of "#ticket"
 Then /^I should see "(.*?)" within the tag "(.*?)" of "(.*?)"$/ do |text_value, tag, css_id|
    find("#{css_id}").find("#{tag}").should have_content(text_value)
 end
