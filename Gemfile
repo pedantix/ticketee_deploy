@@ -27,6 +27,7 @@ group :test do
   gem 'rack-test'
   gem 'cucumber-rails', require: false
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'factory_girl'

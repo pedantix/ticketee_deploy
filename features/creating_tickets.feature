@@ -34,15 +34,16 @@ Scenario: Description must be longer than 10 charachters
   Then I should see "Ticket has not been created."
   And I should see "Description is too short"
 
+@javascript
 Scenario: Creating a ticket with an attatchment
   When I fill in "Title" with "Non-standards compliance"
   And I fill in "Description" with "My pages are ugly!"
   And I attach the file "spec/fixtures/speed.txt" to "File #1"
+  And I follow "Add another file"
   And I attach the file "spec/fixtures/spin.txt" to "File #2"
-  And I attach the file "spec/fixtures/gradient.txt" to "File #3"
   And I press "Create Ticket"
   Then I should see "Ticket has been created."
   Then I should see "Created by user@ticketee.com"
   Then I should see "speed.txt" within the tag ".assets" of "#ticket"
-  Then I should see "speed.txt" within the tag ".assets" of "#ticket"
-  Then I should see "speed.txt" within the tag ".assets" of "#ticket"
+  Then I should see "spin.txt" within the tag ".assets" of "#ticket"
+  When I follow "speed.txt"
