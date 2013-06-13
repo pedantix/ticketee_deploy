@@ -112,4 +112,16 @@ Then(/^I should see link "(.*?)"$/) do |link|
   page.should have_link(link)
 end
 
+Then /^I should see "(.*?)" within "(.*?)"$/ do |text, tag|
+  find(tag).should have_content(text)
+end
 
+Then /^show me the page$/ do
+  save_and_open_page
+end
+
+Given /^I follow "(.*?)" within "(.*?)"$/ do |link, tag|
+  within(tag) do
+    click_link(link)
+  end
+end
