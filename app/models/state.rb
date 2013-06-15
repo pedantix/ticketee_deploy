@@ -1,5 +1,5 @@
 class State < ActiveRecord::Base
-  attr_accessible :background, :color, :name
+  attr_accessible :background, :color, :name, :default
 
   def to_s
     name
