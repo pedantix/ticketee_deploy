@@ -9,7 +9,7 @@ gem 'cancan'
 gem 'paperclip'
 gem 'pg'
 gem 'jquery-rails'
-
+gem 'searcher'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
