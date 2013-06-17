@@ -37,6 +37,10 @@ When /^(?:I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
+When(/^I follow the link with css "(.*?)"$/) do |css|
+  
+end
+
 
 Then(/^(?:|I )should see "([^"]*)"$/) do |regexp|
     regexp = Regexp.new(regexp)
@@ -95,8 +99,6 @@ Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |f
   end
 end
 
-
-
 #Usage
 #Then I should see "Make it shiny" within the tag "h2" of "#ticket"
 Then /^I should see "(.*?)" within the tag "(.*?)" of "(.*?)"$/ do |text_value, tag, css_id|
@@ -114,6 +116,10 @@ end
 
 Then /^I should see "(.*?)" within "(.*?)"$/ do |text, tag|
   find(tag).should have_content(text)
+end
+
+Then /^I should not see "(.*?)" within "(.*?)"$/ do |text, css|
+  find(css).should_not have_content(text)
 end
 
 Then /^show me the page$/ do

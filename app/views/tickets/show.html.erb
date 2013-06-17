@@ -20,8 +20,16 @@
       <% end %>
     </div>
   <% end %>
+</div>
 
-
+<div id='watchers'>
+  <h4>Watchers</h4>
+  <%= toggle_watching_button %>
+  <ul>
+    <% @ticket.watchers.each do |watcher| %>
+      <li><%= watcher %></li>
+    <% end %>
+  </ul>
 </div>
 
 <%= authorized?("edit tickets", @project) do %>
