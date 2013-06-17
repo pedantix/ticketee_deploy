@@ -11,6 +11,8 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'searcher'
 
+
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -20,6 +22,7 @@ end
 
 
 group :test do
+  gem 'gmail'
   gem 'rack-test'
   gem 'cucumber-rails', require: false
   gem 'capybara'
