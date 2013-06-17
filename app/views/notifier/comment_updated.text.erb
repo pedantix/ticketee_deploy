@@ -5,5 +5,5 @@ for <%= @comment.ticket.project.name %>. They wrote:
 
 <%= @comment.text %>
 
-You can view this ticket on line by going to:
+You can view this ticket online by going to:
 <%= project_ticket_url(@comment.ticket.project, @comment.ticket) %>

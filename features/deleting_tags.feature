@@ -21,5 +21,5 @@ Feature: Deleteing Tags
     @javascript
     Scenario: Deleting a tag
       When I follow "delete-this-tag-must-die"
-      Then show me the page
+      #Then show me the page
       Then I should not see "this-tag-must-die"
