@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
 
   before_create :set_previous_state
   after_create :set_ticket_state
-
+  after_create :creator_watches_ticket
 
 private
   def set_ticket_state
@@ -22,6 +22,10 @@ private
 
   def set_previous_state
     self.previous_state = ticket.state
+  end
+
+  def creator_watches_ticket
+    ticket.watchers << user
   end
 
 end
