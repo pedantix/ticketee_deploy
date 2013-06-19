@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def to_s
     "#{email} (#{admin? ? "Admin" : "User" })"
   end
+
+  def self.reset_request_count!
+    update_all("request_count = 0", "request_count > 0")
+  end
 end
