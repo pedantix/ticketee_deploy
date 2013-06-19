@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   has_many :tickets
   has_many :permissions, as: :thing
   
-  validates_presence_of :name, message: "Name can't be blank", uniqueness: true
+  validates_presence_of :name, uniqueness: true # message: "Name can't be blank",
 
   scope :readable_by, lambda { |user|
     joins(:permissions).where( permissions: { action: "view", 
