@@ -38,6 +38,7 @@ group :test do
 end
 
 group :development do
+  gem 'cheat'
   gem 'guard-rspec'
   gem 'guard-cucumber'
 end

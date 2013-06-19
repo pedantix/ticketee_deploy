@@ -1,7 +1,16 @@
 Ticketee::Application.routes.draw do
   
+  #APIs
+  namespace :api do
+    namespace :v1 do
+      resources :projects
+    end
+  end
 
-  get "comments/create"
+
+
+  #webpages
+  #get "comments/create"
 
   devise_for :users, controllers: { registrations: "registrations" }
 
